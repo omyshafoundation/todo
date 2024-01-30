@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello world</h1>
+    <form method="get" action="{{url_for('hello')}}">
+    <label for="login">who you want to be logined as</label>
+
+    <select name="login" id="Members_name_select">
+      <!-- <option value="austin">austin</option>
+      <option value="aiswarya">aiswarya</option>
+      <option value="sanjana">sanjana</option>
+      <option value="subhadip">subhadip</option> -->
+    </select>
+    <button onclick="select_to_pass()" type="submit">click</button>
+  </form>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+      function select_to_pass(){
+        select_pass_name=members_name.value;
+        console.log(select_pass_name)
+      }
+  (async () =>{
+    try{
+      await fetchData();
+      console.log(json_data);
+      for(i=0;i<json_data.length;i++){
+        Task_assignee_names[i]=json_data[i].Task_assignee;
+        Task_board_id[i]=json_data[i].Task_partition_id;
+      }
+      Task_assignee_names = Array.from(new Set(Task_assignee_names))
+      
+    }
+    catch(error){
+      console.log("error")
+    }
+    index_page()
+  })();
+    </script>
+    </body>
+</html>
